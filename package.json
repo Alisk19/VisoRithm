@@ -1,0 +1,54 @@
+{
+  "name": "visorithm",
+  "version": "1.0.0",
+  "description": "VisoRithm - A visually stunning platform for learning Data Structures and Algorithms with step-by-step visualizers and AI-driven insights.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alisk19/VisoRithm.git"
+  },
+  "keywords": [
+    "algorithm-visualizer",
+    "data-structures",
+    "react",
+    "vite",
+    "vercel"
+  ],
+  "author": "Alisk19",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Alisk19/VisoRithm/issues"
+  },
+  "homepage": "https://github.com/Alisk19/VisoRithm#readme",
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@paper-design/shaders-react": "^0.0.75",
+    "@radix-ui/react-avatar": "^1.1.11",
+    "chart.js": "^4.5.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.8.0",
+    "motion": "^12.38.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.5",
+    "react-chartjs-2": "^5.3.1",
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.0",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.9",
+    "tailwindcss": "^3.4.1",
+    "vite": "^8.0.8"
+  }
+}

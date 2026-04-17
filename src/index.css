@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-on-background font-body antialiased selection:bg-primary/30 selection:text-white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline tracking-tight;
+  }
+
+  /* Premium Scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(194, 101, 42, 0.25);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(194, 101, 42, 0.5);
+  }
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .7; transform: scale(1.02); }
+}
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes kenburns {
+  from { transform: scale(1.00); }
+  to   { transform: scale(1.06); }
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY ANIMATION CLASSES
+───────────────────────────────────────────── */
+@layer utilities {
+
+  /* Glass utilities */
+  .bg-glass {
+    @apply bg-black/40 backdrop-blur-md border border-white/10;
+  }
+  .bg-glass-card {
+    @apply bg-zinc-950/80 backdrop-blur-xl border border-white/5;
+  }
+
+  /* Glow animations */
+  .animate-glow {
+    animation: glow-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Entry animations */
+  .animate-entry {
+    animation: slide-up-fade 0.35s ease-out both;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out both;
+  }
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out both;
+  }
+
+  /* Staggered children — apply to parent, children get delay via --stagger-i CSS var */
+  .stagger-children > *:nth-child(1)  { animation-delay: 0ms; }
+  .stagger-children > *:nth-child(2)  { animation-delay: 60ms; }
+  .stagger-children > *:nth-child(3)  { animation-delay: 120ms; }
+  .stagger-children > *:nth-child(4)  { animation-delay: 180ms; }
+  .stagger-children > *:nth-child(5)  { animation-delay: 240ms; }
+  .stagger-children > *:nth-child(6)  { animation-delay: 300ms; }
+  .stagger-children > *:nth-child(7)  { animation-delay: 360ms; }
+  .stagger-children > *:nth-child(8)  { animation-delay: 420ms; }
+
+  /* ── Card interactions ── */
+  .card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card-hover:hover {
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 0 30px -5px rgba(194, 101, 42, 0.3), 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .card-hover:active {
+    transform: scale(0.99);
+  }
+
+  /* ── Button interactions ── */
+  .btn-interact {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  }
+  .btn-interact:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px -4px rgba(194, 101, 42, 0.45);
+  }
+  .btn-interact:active {
+    transform: scale(0.97);
+  }
+
+  /* ── Panel transitions ── */
+  .panel-transition {
+    transition: all 0.25s ease;
+  }
+
+  /* ── Smooth content swap ── */
+  .content-swap {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  /* ── Custom scrollbars for specific panels ── */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(194, 101, 42, 0.3);
+    border-radius: 9999px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(194, 101, 42, 0.6);
+  }
+
+  /* ── Fade gradient overlay helper ── */
+  .fade-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.85));
+    pointer-events: none;
+    border-radius: 0 0 12px 12px;
+    z-index: 2;
+  }
+
+  /* ── Complexity toggle pill ── */
+  .complexity-toggle {
+    @apply flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-[10px] font-bold uppercase tracking-wider cursor-pointer transition-all select-none;
+  }
+  .complexity-toggle:hover {
+    filter: brightness(1.2);
+  }
+  .complexity-toggle.active {
+    opacity: 1;
+  }
+  .complexity-toggle.inactive {
+    opacity: 0.3;
+    filter: grayscale(0.6);
+  }
+
+  /* ── Explanation panel override ── */
+  .explanation-panel-bg {
+    background: #111111;
+    border: 1px solid #222222;
+  }
+
+  /* word wrap safety */
+  .word-safe {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Sidebar hidden scrollbar — still scrollable, no track shown */
+  .sidebar-scroll::-webkit-scrollbar {
+    display: none;
+  }
+}
